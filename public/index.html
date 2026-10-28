@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="page">
+
+        <!-- Stage: live membership card -->
+        <aside class="stage">
+            <span class="aurora a1"></span>
+            <span class="aurora a2"></span>
+            <span class="aurora a3"></span>
+
+            <div class="logo">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" />
+                    <path d="M8.5 12l2.5 2.5L15.5 10" />
+                </svg>
+                <span>YourApp</span>
+            </div>
+
+            <div class="stage-main">
+                <div class="stage-copy">
+                    <h2>Your card takes shape as you type.</h2>
+                    <p>Four details, about a minute. Passwords are hashed with bcrypt before they are stored.</p>
+                </div>
+
+                <div class="card-wrap" id="cardWrap" aria-hidden="true">
+                    <div class="ghost"></div>
+                    <div class="mcard" id="mcard">
+                        <div class="mcard-top">
+                            <svg class="mark" viewBox="0 0 24 24">
+                                <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" />
+                                <path d="M8.5 12l2.5 2.5L15.5 10" />
+                            </svg>
+                            <span class="tier">Member</span>
+                            <span class="stamp"><svg viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7" />
+                                </svg>Active</span>
+                        </div>
+                        <div class="chip"></div>
+                        <div class="mcard-name is-empty" id="cardName">Your name</div>
+                        <div class="mcard-email is-empty" id="cardEmail">you@example.com</div>
+                        <div class="mcard-bottom">
+                            <span class="mono" id="cardPhone">+91 ••••• •••••</span>
+                            <span id="cardDate">Since 2026</span>
+                        </div>
+                        <div class="sheen"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="stage-foot">&copy; 2026 YourApp. All rights reserved.</p>
+        </aside>
+
+        <!-- Form -->
+        <section class="panel">
+            <div class="panel-inner">
+
+                <form id="registrationForm" novalidate>
+                    <header class="head">
+                        <h1>Create your account</h1>
+                        <p class="subtitle">Register to get started. It takes about a minute.</p>
+                    </header>
+
+                    <div class="form-group">
+                        <div class="field">
+                            <input type="text" id="name" name="name" placeholder=" " autocomplete="name"
+                                aria-describedby="nameError">
+                            <label for="name">Full name</label>
+                        </div>
+                        <small id="nameError" class="error" role="alert"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="field">
+                            <input type="email" id="email" name="email" placeholder=" " autocomplete="email"
+                                aria-describedby="emailError">
+                            <label for="email">Email address</label>
+                        </div>
+                        <small id="emailError" class="error" role="alert"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="field">
+                            <input type="tel" id="phone" name="phone" maxlength="10" inputmode="numeric" placeholder=" "
+                                autocomplete="tel-national" aria-describedby="phoneError">
+                            <label for="phone">Phone number (10 digits)</label>
+                            <span class="prefix">+91</span>
+                        </div>
+                        <small id="phoneError" class="error" role="alert"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="field">
+                            <input type="password" id="password" name="password" placeholder=" "
+                                autocomplete="new-password" aria-describedby="passwordError">
+                            <label for="password">Password (at least 8 characters)</label>
+                            <button type="button" class="toggle" data-target="password" aria-label="Show password">
+                                <svg class="eye" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 3l18 18" />
+                                    <path
+                                        d="M10.6 6.1A9.7 9.7 0 0 1 12 6c6 0 10 6 10 6a17 17 0 0 1-3.2 3.9M6.6 7.6A16.5 16.5 0 0 0 2 12s4 6 10 6c1.6 0 3-.4 4.3-1" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="strength" id="strength" data-level="0" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                            <em id="strengthText"></em>
+                        </div>
+                        <small id="passwordError" class="error" role="alert"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="field">
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder=" "
+                                autocomplete="new-password" aria-describedby="confirmPasswordError">
+                            <label for="confirmPassword">Confirm password</label>
+                            <button type="button" class="toggle" data-target="confirmPassword"
+                                aria-label="Show password">
+                                <svg class="eye" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg class="eye-off" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 3l18 18" />
+                                    <path
+                                        d="M10.6 6.1A9.7 9.7 0 0 1 12 6c6 0 10 6 10 6a17 17 0 0 1-3.2 3.9M6.6 7.6A16.5 16.5 0 0 0 2 12s4 6 10 6c1.6 0 3-.4 4.3-1" />
+                                </svg>
+                            </button>
+                        </div>
+                        <small id="confirmPasswordError" class="error" role="alert"></small>
+                    </div>
+
+                    <button type="submit" class="submit" id="submitBtn">
+                        <span class="label">Create account</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                    <p id="message" role="status" aria-live="polite"></p>
+                </form>
+
+                <div id="success" class="success" hidden>
+                    <svg class="tick" viewBox="0 0 52 52" aria-hidden="true">
+                        <circle cx="26" cy="26" r="24" />
+                        <path d="M15 27l8 8 14-16" />
+                    </svg>
+                    <h2>Your card is active</h2>
+                    <p>The account for <strong id="successEmail"></strong> has been created.</p>
+                    <button type="button" class="submit secondary" id="againBtn"><span class="label">Register another
+                            account</span></button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>
